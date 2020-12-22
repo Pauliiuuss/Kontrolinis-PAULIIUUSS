@@ -1,11 +1,13 @@
 package lt2020.sveikinimai.services;
 
 import lt2020.sveikinimai.DAO.SveikinimoVietaDAO;
+import lt2020.sveikinimai.entities.SveikinimoAdresas;
 import lt2020.sveikinimai.entities.SveikinimoVieta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Service
 public class SveikinimoVietaService {
@@ -15,6 +17,11 @@ public class SveikinimoVietaService {
 
     public Collection<SveikinimoVieta> gautiSveikinimoVietas() {
         return sveikinimoVietaDAO.findAll();
+    }
+
+    public void pridetiSveikinimoAdresa(SveikinimoAdresas sveikinimoAdresas, SveikinimoVieta sveikinimoVieta) {
+        Set<SveikinimoAdresas> adresai = sveikinimoVieta.getSveikinimoAdresai();
+        adresai.add(sveikinimoAdresas);
     }
 
     public void istrintiSveikinimoVieta(int id){

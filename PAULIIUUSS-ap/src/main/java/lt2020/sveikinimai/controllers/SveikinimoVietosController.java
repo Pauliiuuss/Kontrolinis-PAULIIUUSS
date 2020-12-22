@@ -2,6 +2,7 @@ package lt2020.sveikinimai.controllers;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lt2020.sveikinimai.entities.SveikinimoAdresas;
 import lt2020.sveikinimai.entities.SveikinimoVieta;
 import lt2020.sveikinimai.services.SveikinimoVietaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class SveikinimoVietosController {
         sveikinimoVietaService.istrintiSveikinimoVieta(id);
     }
 
+    @PostMapping
+    @ApiOperation(value="Prideti sveikinimo adresa",notes = "Prideda sveikinimo adresa")
+    public void pridetiSveikinimoAdresa(@RequestBody SveikinimoAdresas sveikinimoAdresas, @RequestBody SveikinimoVieta sveikinimoVieta){
+        sveikinimoVietaService.pridetiSveikinimoAdresa(sveikinimoAdresas,sveikinimoVieta);
+    }
     @PostMapping("/pridetiSveikinimoVieta")
     @ApiOperation(value="Prideti sveikinimo vieta",notes="Prideda sveikinimo vieta")
     public void pridetiSveikinimoVieta(@RequestBody SveikinimoVieta sveikinimoVieta){
